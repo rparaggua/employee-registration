@@ -1,0 +1,3 @@
+insert into employeeregistration.Contribution(id, name, percentage) values(nextval('employeeregistration.contribution_sequence'), 'TAX', 0.11);
+insert into employeeregistration.Contribution(id, name, percentage) values(nextval('employeeregistration.contribution_sequence'), 'PGIBG', 0.03);
+insert into employeeregistration.Contribution(id, name, percentage) values(nextval('employeeregistration.contribution_sequence'), 'SSS', 0.03);

@@ -1,0 +1,2 @@
+insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), NOW(), 'rparaggua', 'changethis', NULL);
+insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), NOW(), 'richard', 'changethis', NULL);

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+   						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+   						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+   						http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+   						http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+   						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+   						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" >
+
+<!-- 	<import resource="classpath:spring-security.xml"/> -->
+	
+	<!-- Activates various annotations to be detected in bean classes -->
+ 	<context:annotation-config />
+ 	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven validator="validator"/>
+	
+	<!-- Application Message Bundle -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages"/>
+	</bean>
+	
+	<!-- JSR 303 validation -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	
+	<!-- Enable annotation style of managing transactions -->
+	<tx:annotation-driven transaction-manager="transactionManager" /> 
+ 
+	<!-- Declare a transaction manager-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory" />
+	
+	<!--  Log4J -->
+	<bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:${log4j.file}</value>
+			</list>
+		</property>
+	</bean>
+	
+	<jdbc:initialize-database data-source="dataSource" enabled="${jdbc.init-data}">
+		<jdbc:script location="classpath:/database/sql/contribution.sql"/>
+		<jdbc:script location="classpath:/database/sql/branch.sql"/>
+		<jdbc:script location="classpath:/database/sql/department.sql"/>
+		<jdbc:script location="classpath:/database/sql/employee.sql"/>
+		<jdbc:script location="classpath:/database/sql/ersaccount.sql"/>
+	</jdbc:initialize-database>
+	
+	<!-- Declare the Hibernate SessionFactory for retrieving Hibernate sessions -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:packagesToScan="com.onb.employeeRegistration"
+		p:hibernateProperties-ref="hibernateProperties">
+	</bean>
+
+	<util:properties id="hibernateProperties">
+		<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+		<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+		<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+		<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+		<prop key="hibernate.default_schema">${hibernate.default_schema}</prop>
+		<prop key="javax.persistence.validation.mode">none</prop>
+	</util:properties>
+	
+	<context:component-scan base-package="com.onb.employeeRegistration" />
+	
+	<beans profile="dev">
+		<context:property-placeholder location="classpath:config-dev.properties" />
+		
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="${jdbc.driverClassName}" /> 
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+	</beans>
+</beans>
+	

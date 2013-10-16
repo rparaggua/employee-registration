@@ -1,0 +1,44 @@
+.paging_full_numbers .ui-button {
+	padding: 2px 6px;
+	margin: 0;
+	cursor: pointer;
+}
+
+.dataTables_paginate .ui-button {
+	margin-right: -0.1em !important;
+	float: right;
+}
+
+.dataTables_info {
+	margin-top: 2px;
+	float: left;
+}
+
+.dataTables_filter {
+	float: right;
+}
+
+.dataTables_length {
+	float: left;
+}
+
+.ex_highlight #branchTable tbody tr, #branchTable tbody tr:hover {
+	background-color: rgb(42, 159, 214);
+}
+
+.ex_highlight #departmentTable tbody tr, #departmentTable tbody tr:hover {
+	background-color: rgb(42, 159, 214);
+}
+
+.ex_highlight #employeeTable tbody tr, #employeeTable tbody tr:hover {
+	background-color: rgb(42, 159, 214);
+}
+
+th {
+  text-align:center;
+}
+#branchTable, #departmentTable, #employeeTable {
+    border: 0px solid; 
+    width: 100%; 
+    text-align:center;   
+}

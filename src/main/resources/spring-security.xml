@@ -1,0 +1,43 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+ 
+ 	<!-- To enable @Secured annotation -->
+ 	<global-method-security pre-post-annotations="enabled"/>
+ 
+ 	<!-- Contains core security rules -->
+	<http pattern="/resources/**" security="none" disable-url-rewriting="true"/>
+	<http pattern="/" security="none" disable-url-rewriting="true"/>
+
+	
+	<http auto-config="true" use-expressions="true">
+		
+		<form-login login-page="/login" default-target-url="/login-success"
+			always-use-default-target="true" authentication-failure-url="/login-failed"
+			username-parameter="username" password-parameter="password"/>
+		
+		<access-denied-handler error-page="/denied"/>
+		
+		<logout invalidate-session="true" 
+			logout-success-url="/logout-success" 
+			logout-url="/logout"/>
+	</http>
+	
+<!-- 	<beans:bean id="passwordEncoder" -->
+<!-- 		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"> -->
+<!-- 		<beans:constructor-arg value="256" /> -->
+<!-- 	</beans:bean> -->
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userService">
+			<password-encoder hash="plaintext">
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+	
+</beans:beans>
