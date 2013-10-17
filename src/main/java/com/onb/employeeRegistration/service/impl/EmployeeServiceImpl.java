@@ -17,9 +17,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired
 	private EmployeeDao employeeDao;
 	
-//	@Autowired
-//	private ContributionService contributionService;
-	
 	@Override
 	public void addOrUpdateEmployee(Employee employee) {
 		employeeDao.addOrUpdateEmployee(employee);
@@ -44,19 +41,4 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public Employee getEmployeeByEmail(String email) {
 		return employeeDao.getEmployeeByEmail(email);
 	}
-	
-//	private Employee computeContributions(Map<String, BigDecimal> contribution, Employee employee){
-//		
-//		employee.setPagibigContribution(contribution.get("PGIBG").multiply(employee.getGrossSalary()));
-//		employee.setSSSContribution(contribution.get("SSS").multiply(employee.getGrossSalary()));
-//		employee.setTaxContribution(contribution.get("TAX").multiply(employee.getGrossSalary()));
-//		employee.setDepartmentalBonus(employee.getDepartment().getDEPB().multiply(employee.getGrossSalary()));
-//		employee.setNetSalary(employee.getGrossSalary()
-//				.subtract(employee.getPagibigContribution()
-//						.add(employee.getSSSContribution()
-//						.add(employee.getTaxContribution())))
-//				.add(employee.getDepartmentalBonus()));
-//		
-//		return employee;
-//	}
 }

@@ -1,6 +1,10 @@
 package com.onb.employeeRegistration.util;
 
 public class PatternUtility {
+	
+	private PatternUtility(){
+	}
+	
 	public static final String NAME_PATTERN = "[a-zA-Z ]*";
 	public static final String USERNAME_PATTERN ="[a-zA-Z0-9]*";
 	public static final String PASSWORD_PATTERN = "^(?=.*\\d).{7,15}";

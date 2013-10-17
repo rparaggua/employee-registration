@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onb.employeeRegistration.domain.Branch;
 import com.onb.employeeRegistration.service.BranchService;
-import com.onb.employeeRegistration.service.EmployeeService;
 
 @Controller
 @RequestMapping(value = "/branch")
@@ -23,8 +22,6 @@ public class BranchController {
 	@Autowired
 	private BranchService branchService;
 	
-	@Autowired
-	private EmployeeService employeeService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getBranchView(Model model){
@@ -36,7 +33,7 @@ public class BranchController {
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String addBranch(Model model){
+	public String getAddBranchView(Model model){
 		
 		model.addAttribute("branch", new Branch());
 		
