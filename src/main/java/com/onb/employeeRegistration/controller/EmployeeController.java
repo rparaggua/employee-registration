@@ -130,7 +130,8 @@ public class EmployeeController {
 		employee.setNetSalary(employee.getGrossSalary()
 				.subtract(employee.getPagibigContribution()
 						.add(employee.getSSSContribution()
-						.add(employee.getTaxContribution()))).add(employee.getDepartmentalBonus()));
+						.add(employee.getTaxContribution())))
+				.add(employee.getDepartmentalBonus()));
 		
 		return employee;
 	}
@@ -159,6 +160,4 @@ public class EmployeeController {
 		
 		return result;
 	}
-
-
 }

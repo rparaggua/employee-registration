@@ -92,6 +92,10 @@ public class Branch implements Serializable{
 
 	public void setAddress(String address) {
 		this.address = address;
+		
+		if(this.address.length()==0){
+			this.address = null;
+		}
 	}
 
 	public String getEmail() {
@@ -112,6 +116,10 @@ public class Branch implements Serializable{
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+		
+		if(this.phoneNumber.length() == 0){
+			this.phoneNumber = null;
+		}
 	}
 
 	public List<Department> getDepartments() {

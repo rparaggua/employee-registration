@@ -14,7 +14,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -24,6 +23,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
@@ -86,10 +86,10 @@ public class Employee implements Serializable {
 	@Column(name = "phoneNumber", nullable = true, unique = false, length = 25)
 	private String phoneNumber;
 	
-	@Digits(integer = 6,
-			fraction = 2,
-			message = "{com.onb.employeeregistration.validator.message.invalidPercentage}")
 	@NumberFormat(style=Style.NUMBER)
+	@Range(min = 1000, 
+			max = 500000,
+			message = "{com.onb.employeeregistration.validator.message.invalidSalary}")
 	private BigDecimal GrossSalary;
 
 	@ManyToOne
@@ -149,6 +149,10 @@ public class Employee implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+		
+		if(this.address.length()==0){
+			this.address=null;
+		}
 	}
 
 	public String getEmail() {
@@ -169,6 +173,10 @@ public class Employee implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+		
+		if(this.phoneNumber.length()==0){
+			this.phoneNumber=null;
+		}
 	}
 
 	public BigDecimal getGrossSalary() {
