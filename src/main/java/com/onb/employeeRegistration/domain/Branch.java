@@ -35,7 +35,7 @@ public class Branch implements Serializable{
 	@Column(name = "id")
 	@SequenceGenerator(name = "BranchSequence", sequenceName = "Branch_Sequence", initialValue = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "BranchSequence")
-	private long id;
+	private Long id;
 	
 	@Size(max = 30,
 			message = "{com.onb.employeeregistration.validator.message.invalidSize}")
@@ -70,11 +70,11 @@ public class Branch implements Serializable{
 	@Cascade({CascadeType.ALL})
 	private List<Department> departments;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

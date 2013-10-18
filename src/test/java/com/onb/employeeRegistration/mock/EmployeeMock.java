@@ -20,7 +20,7 @@ public class EmployeeMock {
 		employee.setLastname("Paraggua");
 		employee.setPhoneNumber("123 456");
 		employee.setEmail("employee1@email.com");
-		employee.setGrossSalary(new BigDecimal("10,000.00"));
+		employee.setGrossSalary(new BigDecimal("10000.00"));
 		employee.setDepartment(DepartmentMock.generateDepartment());
 		
 		return employee;
@@ -29,13 +29,12 @@ public class EmployeeMock {
 	public static Employee generateNewEmployee(){
 		Employee employee = new Employee();
 		
-		employee.setId(1L);
 		employee.setFirstname("NewFirstname");
 		employee.setMiddlename("NewMiddlename");
 		employee.setLastname("NewLastname");
 		employee.setPhoneNumber("612 345");
 		employee.setEmail("newemployee@email.com");
-		employee.setGrossSalary(new BigDecimal("1,000.00"));
+		employee.setGrossSalary(new BigDecimal("1000.00"));
 		employee.setDepartment(DepartmentMock.generateDepartment());
 		
 		return employee;
@@ -51,7 +50,7 @@ public class EmployeeMock {
 		employee1.setLastname("Paraggua");
 		employee1.setPhoneNumber("123 456");
 		employee1.setEmail("employee1@email.com");
-		employee1.setGrossSalary(new BigDecimal("10,000.00"));
+		employee1.setGrossSalary(new BigDecimal("10000.00"));
 		employee1.setDepartment(DepartmentMock.generateDepartment());
 		employeeList.add(employee1);
 		
@@ -62,7 +61,7 @@ public class EmployeeMock {
 		employee2.setLastname("Salinas");
 		employee2.setPhoneNumber("612 345");
 		employee2.setEmail("employee2@email.com");
-		employee2.setGrossSalary(new BigDecimal("10,000.00"));
+		employee2.setGrossSalary(new BigDecimal("10000.00"));
 		employee2.setDepartment(DepartmentMock.generateDepartment());
 		employeeList.add(employee2);
 		
@@ -73,7 +72,7 @@ public class EmployeeMock {
 		employee3.setLastname("Layus");
 		employee3.setPhoneNumber("561 234");
 		employee3.setEmail("employee3@email.com");
-		employee3.setGrossSalary(new BigDecimal("10,000.00"));
+		employee3.setGrossSalary(new BigDecimal("10000.00"));
 		employee3.setDepartment(DepartmentMock.generateDepartment());
 		employeeList.add(employee3);
 		

@@ -42,7 +42,7 @@ public class Department implements Serializable{
 	@Column(name = "id")
 	@SequenceGenerator(name = "DepartmentSequence", sequenceName = "Department_Sequence", initialValue = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "DepartmentSequence")
-	private long id;
+	private Long id;
 	
 	@Size(max = 30,
 			message = "{com.onb.employeeregistration.validator.message.invalidSize}")
@@ -67,11 +67,11 @@ public class Department implements Serializable{
 	@Cascade({CascadeType.ALL})
 	private List<Employee> employees;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

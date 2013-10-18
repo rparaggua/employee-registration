@@ -13,7 +13,7 @@ public class BranchMock {
 	public static Branch generateBranch(){
 		Branch branch = new Branch();
 		
-		branch.setId(1);
+		branch.setId(1L);
 		branch.setName("Branch1");
 		branch.setAddress("Branch1 Address");
 		branch.setEmail("branch1@email.com");
@@ -24,7 +24,6 @@ public class BranchMock {
 	public static Branch generateNewBranch(){
 		Branch branch = new Branch();
 		
-		branch.setId(2L);
 		branch.setName("New Branch");
 		branch.setAddress("New Branch Address");
 		branch.setEmail("newbranch@email.com");

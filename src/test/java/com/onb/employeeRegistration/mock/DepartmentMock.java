@@ -25,10 +25,8 @@ public class DepartmentMock {
 	public static Department generateNewDepartment(){
 		Department department = new Department();
 
-		department.setId(2L);
 		department.setName("New Department");
-		department.setDEPB(new BigDecimal("0.01"));
-		department.setBranch(BranchMock.generateBranch());
+		department.setDEPB(new BigDecimal("0.00"));
 		
 		return department;
 	}
