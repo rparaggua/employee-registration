@@ -37,6 +37,7 @@ public class DepartmentControllerTest {
 	@InjectMocks
 	private DepartmentController departmentController;
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void getBranchDepartmentView(){
 		//given

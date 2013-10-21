@@ -20,7 +20,7 @@
  	 		</tr>
  		</thead>
  		<tbody>
- 			<c:if test="${fn:length(employeeList) != 0}">
+<%--  			<c:if test="${fn:length(employeeList) != 0}"> --%>
  				<c:forEach var="employee" items="${employeeList}">
  					<tr>
  						<td>
@@ -56,7 +56,7 @@
  						</td>
  					</tr>
  				</c:forEach>
- 			</c:if>
+<%--  			</c:if> --%>
  		</tbody>
 	</table>
 	

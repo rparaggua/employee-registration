@@ -11,6 +11,15 @@ public class ContributionMock {
 	private ContributionMock(){
 	}
 	
+	public static Contribution generateContribution(){
+		Contribution contribution = new Contribution();
+		contribution.setId(1L);
+		contribution.setName("SSS");
+		contribution.setPercentage(new BigDecimal("0.03"));
+
+		return contribution;
+	}
+	
 	public static List<Contribution> generateContributionList(){
 		
 		List <Contribution> contributionList = new ArrayList<Contribution>();

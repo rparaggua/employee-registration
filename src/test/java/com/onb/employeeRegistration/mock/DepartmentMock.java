@@ -27,6 +27,7 @@ public class DepartmentMock {
 
 		department.setName("New Department");
 		department.setDEPB(new BigDecimal("0.00"));
+		department.setBranch(BranchMock.generateBranch());
 		
 		return department;
 	}

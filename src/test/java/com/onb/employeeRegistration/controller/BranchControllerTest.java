@@ -32,6 +32,7 @@ public class BranchControllerTest {
 	@InjectMocks
 	private BranchController branchController;
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void shouldGetBranchView(){
 		//given

@@ -17,7 +17,17 @@ public class BranchMock {
 		branch.setName("Branch1");
 		branch.setAddress("Branch1 Address");
 		branch.setEmail("branch1@email.com");
-		branch.setPhoneNumber("123 456");
+		branch.setPhoneNumber("02-111-01-11");
+		return branch;
+	}
+	
+	public static Branch generateInvalidBranch(){
+		Branch branch = new Branch();
+		
+		branch.setName("Invalid Branch");
+		branch.setAddress("Branch1 Address");
+		branch.setEmail("invalid email.com");
+		branch.setPhoneNumber("02-111-01-11");
 		return branch;
 	}
 	
