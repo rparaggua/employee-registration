@@ -6,11 +6,7 @@
 <!--     <a class="list-group-item" href="#">Change Password</a> -->
 <!--     <a class="list-group-item" href="#">Add User</a> -->
 <!--     <a class="list-group-item" href="#">Edit Role</a> -->
-    <a class="list-group-item" href="#">Logout</a>
+    <a class="list-group-item" href="${pageContext.servletContext.contextPath}/logout">Logout</a>
 </div>
 
-<script type="text/javascript"> 
-// $("#branchList").click(function() { 
-// 	document.location.href = "branch/";
-// });
 </script>

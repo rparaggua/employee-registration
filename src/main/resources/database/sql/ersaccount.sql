@@ -1,2 +1,2 @@
-insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), NOW(), 'rparaggua', 'changethis', NULL);
-insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), NOW(), 'richard', 'changethis', NULL);
+insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), '2013-10-23', 'rparaggua', '896bc854b5c4f3e43eb0f9abbe4d3e90ec9bdb4a20ee7096f894309d4da65a87', NULL);
+insert into employeeregistration.ersaccount(id, datecreated, username, password, employee_id) values (nextval('employeeregistration.ersaccount_sequence'), '2013-10-23', 'richard', '896bc854b5c4f3e43eb0f9abbe4d3e90ec9bdb4a20ee7096f894309d4da65a87', NULL);

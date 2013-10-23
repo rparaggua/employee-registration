@@ -18,4 +18,19 @@ public class LoginController {
 		model.addAttribute("error", "Invalid Username or Password");
 		return "login";
 	}
+	
+	@RequestMapping(value = "/login-success")
+	public String loginSuccess() {
+		return "redirect:/branch";
+	}
+	
+	@RequestMapping(value = "/logout-success")
+	public String logoutSuccess() {
+		return "redirect:/login";
+	}
+	
+	@RequestMapping(value = "/denied")
+	public String accessDenied() {
+		return "redirect:/login";
+	}
 }

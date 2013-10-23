@@ -26,7 +26,7 @@ public class ERSAccountDaoImpl implements ERSAccountDao {
 	@Override
 	public ERSAccount getERSAccountByUsername(String username) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ERSAccount.class);
-		criteria.add(Restrictions.eq("username", username));
+		criteria.add(Restrictions.eq("username", username).ignoreCase());
 		return (ERSAccount) criteria.uniqueResult();
 	}
 
