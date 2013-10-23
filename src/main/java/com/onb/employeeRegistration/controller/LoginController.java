@@ -15,7 +15,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login-failed", method = RequestMethod.GET)
 	public String loginFailed(Model model) {
-		model.addAttribute("error", "Invalid username or password");
+		model.addAttribute("error", "Invalid Username or Password");
 		return "login";
 	}
 }

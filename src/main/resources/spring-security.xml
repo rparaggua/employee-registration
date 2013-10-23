@@ -35,10 +35,8 @@
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
-			<password-encoder hash="plaintext">
-			</password-encoder>
 		</authentication-provider>
 	</authentication-manager>
 	
-	<beans:bean id="userService" class="com.onb.employeeRegistration.service.impl.ERSAccountServiceImpl"/>
+<!-- 	<beans:bean id="userService" class="com.onb.employeeRegistration.service.impl.ERSAccountServiceImpl"/> -->
 </beans:beans>

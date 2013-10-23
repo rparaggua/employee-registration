@@ -57,6 +57,9 @@
 		<jdbc:script location="classpath:/database/sql/branch.sql"/>
 		<jdbc:script location="classpath:/database/sql/department.sql"/>
 		<jdbc:script location="classpath:/database/sql/employee.sql"/>
+		<jdbc:script location="classpath:/database/sql/access.sql"/>
+		<jdbc:script location="classpath:/database/sql/role.sql"/>
+		<jdbc:script location="classpath:/database/sql/role-access.sql"/>
 		<jdbc:script location="classpath:/database/sql/ersaccount.sql"/>
 	</jdbc:initialize-database>
 	
