@@ -9,12 +9,10 @@ import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.onb.employeeRegistration.dao.RoleDao;
 import com.onb.employeeRegistration.domain.Role;
 
-@Repository
 public class RoleDaoImpl implements RoleDao{
 
 	@Autowired
@@ -23,6 +21,7 @@ public class RoleDaoImpl implements RoleDao{
 	@Override
 	public void addOrUpdateRole(Role role) {
 		sessionFactory.getCurrentSession().saveOrUpdate(role);
+		
 	}
 
 	@Override

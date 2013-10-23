@@ -20,8 +20,6 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.onb.employeeRegistration.util.PatternUtility;
-
 @Entity
 @Table(name = "Access")
 public class Access implements Serializable{
@@ -34,9 +32,10 @@ public class Access implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "AccessSequence")
 	private Long id;
 	
-	@Size(max = 100,
+	@Size(min = 1,
+			max = 100,
 			message = "{com.onb.employeeregistration.validator.message.invalidSize}")
-	@Pattern(regexp = PatternUtility.ACCESS_PATTERN,
+	@Pattern(regexp = "{com.onb.employeeregistration.pattern.access_pattern}",
 			message = "{com.onb.employeeregistration.validator.message.invalidAccessPattern}")
 	@Column(name = "name", nullable = false, unique = true, length = 100)
 	@NotBlank(message = "{com.onb.employeeregistration.validator.message.required}")

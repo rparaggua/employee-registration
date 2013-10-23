@@ -40,4 +40,5 @@
 		</authentication-provider>
 	</authentication-manager>
 	
+	<beans:bean id="userService" class="com.onb.employeeRegistration.service.impl.ERSAccountServiceImpl"/>
 </beans:beans>

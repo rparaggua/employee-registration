@@ -17,7 +17,7 @@
    						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
    						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd" >
 
-<!-- 	<import resource="classpath:spring-security.xml"/> -->
+	<import resource="classpath:spring-security.xml"/>
 	
 	<!-- Activates various annotations to be detected in bean classes -->
  	<context:annotation-config />

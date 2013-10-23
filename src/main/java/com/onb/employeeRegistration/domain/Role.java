@@ -24,8 +24,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.onb.employeeRegistration.util.PatternUtility;
-
 @Entity
 @Table(name = "Role")
 public class Role implements Serializable{
@@ -38,9 +36,10 @@ public class Role implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "RoleSequence")
 	private Long id;
 	
-	@Size(max = 100,
+	@Size(min = 1,
+			max = 100,
 			message = "{com.onb.employeeregistration.validator.message.invalidSize}")
-	@Pattern(regexp = PatternUtility.ROLE_PATTERN,
+	@Pattern(regexp = "{com.onb.employeeregistration.pattern.role_pattern}",
 			message = "{com.onb.employeeregistration.validator.message.invalidRolePattern}")
 	@Column(name = "name", nullable = false, unique = true, length = 100)
 	@NotBlank(message = "{com.onb.employeeregistration.validator.message.required}")
