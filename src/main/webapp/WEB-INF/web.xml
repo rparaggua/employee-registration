@@ -46,9 +46,19 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-<!-- 	<listener> -->
-<!--     	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class> -->
-<!--   	</listener> -->
+	<listener>
+    	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+  	</listener>
+  	
+  	<filter>
+		<filter-name>LoginPageFilter</filter-name>
+    	<filter-class>com.onb.employeeRegistration.filter.LoginPageFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+    	<filter-name>LoginPageFilter</filter-name>
+    	<url-pattern>/login</url-pattern>
+	</filter-mapping>
 
 	<servlet>
 		<servlet-name>employee-registration</servlet-name>

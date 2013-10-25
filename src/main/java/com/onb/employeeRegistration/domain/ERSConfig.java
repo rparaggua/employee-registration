@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-@Entity
+//@Entity
 public class ERSConfig implements Serializable {
 
 	private static final long serialVersionUID = 6298717706651846094L;

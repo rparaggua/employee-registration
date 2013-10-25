@@ -28,6 +28,12 @@ public class CustomAuthenticationManager implements AuthenticationManager{
 	@Autowired
 	private ERSAccountService ersAccountService;
 	
+//	@Autowired(name="sessionRegistry")
+//	 private SessionRegistryImpl sessionRegistry;
+//	
+//	@Resource(name="sessionRegistry")
+//	 private SessionRegistryImpl sessionRegistry;
+	
 	@Autowired
 	private void setShaPasswordEncoder() {
 		this.shaPasswordEncoder = new ShaPasswordEncoder(256);

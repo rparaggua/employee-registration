@@ -48,7 +48,7 @@
  			</c:if>
  		</tbody>
 	</table>
-	
+
 	<div class="control">
 		<span><a href="#" id="addLink">Add</a></span>
 		<span><a href="#" id="editLink">Edit</a></span>

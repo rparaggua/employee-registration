@@ -12,26 +12,42 @@
  
  	<!-- Contains core security rules -->
 	<http pattern="/denied" security="none" disable-url-rewriting="true"/>
-	<http pattern="/login/**" security="none" disable-url-rewriting="true"/>
+<!-- 	<http pattern="/login" security="none" disable-url-rewriting="true"/> -->
+	<http pattern="/login-failed" security="none" disable-url-rewriting="true"/>
 	<http pattern="/resources/**" security="none" disable-url-rewriting="true"/>
 	<http pattern="/" security="none" disable-url-rewriting="true"/>
 	
-	<http auto-config="false" use-expressions="true" entry-point-ref="authenticationEntryPoint"
-		access-denied-page="/denied">
-		<intercept-url pattern="/**" access="isAuthenticated()" requires-channel="any"/>
-<!-- 		<intercept-url pattern="/login*" access="permitAll"/> -->
+	<http auto-config="false" use-expressions="true" entry-point-ref="authenticationEntryPoint" access-denied-page="/denied">
+		<intercept-url pattern="/branch/**" access="isAuthenticated()" requires-channel="any"/>
+		<intercept-url pattern="/department/**" access="isAuthenticated()" requires-channel="any"/>
+		<intercept-url pattern="/employee/**" access="isAuthenticated()" requires-channel="any"/>
+		<intercept-url pattern="/login-success*" access="isAuthenticated()" requires-channel="any"/>
 		
 		<logout invalidate-session="true" 
 			logout-success-url="/logout-success" 
 			logout-url="/logout"/>
+			
 		<custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER"/>
+		<custom-filter ref="concurrencyFilter" position="CONCURRENT_SESSION_FILTER"/>
 	</http>
 	
  	<!-- Custom filter for username and password-->
  	<beans:bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"
+  		p:sessionAuthenticationStrategy-ref="sas"
   		p:authenticationManager-ref="customAuthenticationManager"
   		p:authenticationFailureHandler-ref="customAuthenticationFailureHandler"
   		p:authenticationSuccessHandler-ref="customAuthenticationSuccessHandler" />
+  		
+  	<beans:bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter"
+     	p:sessionRegistry-ref="sessionRegistry"
+     	p:expiredUrl="/login" />
+ 
+	<beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+	
+	<beans:bean id="sas" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy"
+    	p:maximumSessions="1" >
+    	<beans:constructor-arg name="sessionRegistry" ref="sessionRegistry" />
+ 	</beans:bean>
   		
 	<!-- Custom authentication manager-->
 	<beans:bean id="customAuthenticationManager" class="com.onb.employeeRegistration.init.CustomAuthenticationManager" />
@@ -47,10 +63,11 @@
  	<!-- Authentication Entrypoint -->
  	<beans:bean id="authenticationEntryPoint"  class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint"
 	 	p:loginFormUrl="/login"/>
-	 	
+	 
+	<beans:bean id="authenticationTrustResolver" class="org.springframework.security.authentication.AuthenticationTrustResolverImpl" />
+         	
 	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
-		p:cacheSeconds="0"
-		p:/>
+		p:cacheSeconds="0"/> 
 	
 	<authentication-manager/>
 </beans:beans>
