@@ -12,6 +12,11 @@
 		<title><tiles:insertAttribute name="title" ignore="true" /></title>
 		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/bootstrap.css"/>
 		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/helper.css"/>
+		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/jquery/dark-hive/jquery-ui-1.8.6.custom.css"/>
+		
+		<!-- JS Imports -->
+	 	<script src="${pageContext.servletContext.contextPath}/resources/js/jquery-1.8.3.min.js"></script>
+		<script src="${pageContext.servletContext.contextPath}/resources/js/jquery-ui-1.8.12.custom.min.js"></script>
 	</head>
 
 

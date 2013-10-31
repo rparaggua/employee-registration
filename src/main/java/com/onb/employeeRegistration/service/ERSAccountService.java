@@ -13,5 +13,7 @@ public interface ERSAccountService {
 	ERSAccount getERSAccountByUsername(String username);
 
 	List<ERSAccount> ersAccountList();
+	
+	Boolean usernameExist(String username);
 
 }

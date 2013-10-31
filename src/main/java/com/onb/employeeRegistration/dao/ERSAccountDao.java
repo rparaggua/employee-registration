@@ -15,4 +15,6 @@ public interface ERSAccountDao {
 	void deleteERSAccount(ERSAccount ersAccount);
 	
 	public List<ERSAccount> getERSAccountList();
+	
+	Boolean usernameExist(String username);
 }

@@ -11,9 +11,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.onb.employeeRegistration.service.ERSAccountService;
+
 
 public class LoginPageFilter implements Filter {
 
+	@Autowired
+	private ERSAccountService ersAccountService;
+	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
@@ -26,7 +33,7 @@ public class LoginPageFilter implements Filter {
 	    HttpServletResponse response = (HttpServletResponse) servletResponse;
 
 	    if(request.getUserPrincipal() != null){
-	    	response.sendRedirect("login-success");
+	    	response.sendRedirect("/employee-registration"+(String)request.getSession().getAttribute("targetUrl"));
 	    }
 	    else{
 	    	filterChain.doFilter(servletRequest, servletResponse);
@@ -36,6 +43,4 @@ public class LoginPageFilter implements Filter {
 	@Override
 	public void destroy() {
 	}
-
-
 }

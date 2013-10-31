@@ -61,6 +61,7 @@
 		<jdbc:script location="classpath:/database/sql/role.sql"/>
 		<jdbc:script location="classpath:/database/sql/role-access.sql"/>
 		<jdbc:script location="classpath:/database/sql/ersaccount.sql"/>
+		<jdbc:script location="classpath:/database/sql/user_roles.sql"/>
 	</jdbc:initialize-database>
 	
 	<!-- Declare the Hibernate SessionFactory for retrieving Hibernate sessions -->

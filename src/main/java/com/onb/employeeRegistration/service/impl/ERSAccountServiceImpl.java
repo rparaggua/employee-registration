@@ -36,4 +36,9 @@ public class ERSAccountServiceImpl implements ERSAccountService {
 	public List<ERSAccount> ersAccountList() {
 		return ersAccountDao.getERSAccountList();
 	}
+
+	@Override
+	public Boolean usernameExist(String username) {
+		return ersAccountDao.usernameExist(username);
+	}
 }

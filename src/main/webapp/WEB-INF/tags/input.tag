@@ -15,18 +15,13 @@
     <c:set var="label" value="${fn:toUpperCase(fn:substring(path, 0, 1))}${fn:toLowerCase(fn:substring(path, 1,fn:length(path)))}" />
 </c:if>
 <spring:bind path="${path}">
-    <div class="control-group ${status.error ? 'error' : '' }">
+    <div class="control-group">
+    	<label class="control-label" for="${path}">${label}<c:if test="${required}"><span class="required">*</span></c:if></label>
         <div class="controls">
-        	<tr>
-        		<td class="field-label" width="32%">
-        	 		<label class="control-label" for="${path}">${label}<c:if test="${required}"><span class="required">*</span></c:if></label>
-        	 	</td>
-        	 	<td width="68%">
-            		<form:input path="${path}" cssClass="${empty cssClass ? 'input-xlarge' : cssClass}" placeholder="${empty placeholder ? '' : placeholder}" size="${empty size ? '15' : size}"/>
-			            <c:if test="${status.error}">
-			                <span class="help-inline">${status.errorMessage}</span>
-			            </c:if>
-			    </td>
+        	<form:input path="${path}" cssClass="${empty cssClass ? 'input-xlarge' : cssClass}" placeholder="${empty placeholder ? '' : placeholder}" size="${empty size ? '15' : size}"/>
+			<c:if test="${status.error}">
+                <span class="error">${status.errorMessage}</span>
+            </c:if>
         </div>
     </div>
 </spring:bind>

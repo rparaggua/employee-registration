@@ -48,4 +48,11 @@ public class ERSAccountDaoImpl implements ERSAccountDao {
 		sessionFactory.getCurrentSession().delete(ersAccount);
 	}
 
+	@Override
+	public Boolean usernameExist(String username) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ERSAccount.class);
+		criteria.add(Restrictions.eq("username", username).ignoreCase());
+		return criteria.uniqueResult() != null;
+	}
+
 }

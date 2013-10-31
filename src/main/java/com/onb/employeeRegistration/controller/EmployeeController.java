@@ -35,20 +35,15 @@ public class EmployeeController {
 	@Autowired
 	private ContributionService contributionService;
 	
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public String getDepartmentEmployee(@PathVariable Long id, Model model){
+	@RequestMapping(value="/view/{id}", method = RequestMethod.GET)
+	public String getEmployeeView(@PathVariable Long id, Model model){
 		
 		Map<String, BigDecimal> contribution = convertListToMap();
-		List<Employee> employeeList = employeeService.getEmployeeByDepartmentId(id);
+		Employee employee = computeContributions(contribution, employeeService.getEmployeeById(id));
 		
-		for(int i = 0; i<employeeList.size(); i++){
-			employeeList.set(i,computeContributions(contribution, employeeList.get(i)));
-		}
+		model.addAttribute("employee", employee);
 		
-		model.addAttribute("departmentId", id);
-		model.addAttribute("employeeList", employeeList);
-		
-		return "employeeListView";
+		return "employee-view";
 	}
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
@@ -72,7 +67,7 @@ public class EmployeeController {
 		else {
 			try{
 				employeeService.addOrUpdateEmployee(employee);
-				return "redirect:/employee/"+employee.getDepartment().getId();
+				return "redirect:/department/view/"+employee.getDepartment().getId();
 			}
 			catch(DataIntegrityViolationException ex){
 				result.rejectValue("firstname", "com.onb.employeeregistration.validator.message.employeeExist");
@@ -101,7 +96,7 @@ public class EmployeeController {
 		else {
 			try{
 				employeeService.addOrUpdateEmployee(employee);
-				return "redirect:/employee/"+employee.getDepartment().getId();
+				return "redirect:/department/view/"+employee.getDepartment().getId();
 			}
 			catch(DataIntegrityViolationException ex){
 				result.rejectValue("firstname", "com.onb.employeeregistration.validator.message.employeeExist");
@@ -117,7 +112,7 @@ public class EmployeeController {
 		Long departmentId = employee.getDepartment().getId();
 		employeeService.deleteEmployee(employee);
 		
-		return "redirect:/employee/"+departmentId;
+		return "redirect:/department/view/"+departmentId;
 	}
 
 	

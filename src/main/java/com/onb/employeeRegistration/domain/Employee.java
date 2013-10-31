@@ -226,7 +226,7 @@ public class Employee implements Serializable {
 	public void setSSSContribution(BigDecimal sSSContribution) {
 		SSSContribution = sSSContribution;
 	}
-
+	
 	public BigDecimal getNetSalary() {
 		return NetSalary;
 	}
@@ -234,8 +234,7 @@ public class Employee implements Serializable {
 	public void setNetSalary(BigDecimal netSalary) {
 		NetSalary = netSalary;
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
 		HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();

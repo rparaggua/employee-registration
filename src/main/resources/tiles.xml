@@ -34,59 +34,65 @@
     </definition>
     
     <!-- Branch Function -->
+     <definition name="branch-View" extends="base">
+        <put-attribute name="title" value="Branch View" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/pages/branch/branch-view.jsp" />
+    </definition>
+    
     <definition name="branchListView" extends="base">
         <put-attribute name="title" value="Branch List View" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/branch/branchList.jsp" />
     </definition>
     
     <definition name="branch-add" extends="base">
         <put-attribute name="title" value="Add Branch" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/branch/branch-add.jsp" />
     </definition>
     
     <definition name="branch-edit" extends="base">
         <put-attribute name="title" value="Add Branch" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/branch/branch-edit.jsp" />
     </definition>
     
     <!-- Department Function -->
-    <definition name="branchDepartmentListView" extends="base">
-        <put-attribute name="title" value="Department List View" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
-        <put-attribute name="body" value="/WEB-INF/pages/department/departmentList.jsp" />
+    <definition name="department-view" extends="base">
+        <put-attribute name="title" value="Department View" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/pages/department/department-view.jsp" />
     </definition>
     
     <definition name="department-add" extends="base">
         <put-attribute name="title" value="Add Department" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/department/department-add.jsp" />
     </definition>
     
     <definition name="department-edit" extends="base">
         <put-attribute name="title" value="Add Department" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/department/department-edit.jsp" />
     </definition>
     
     <!-- Employee Function -->
-    <definition name="employeeListView" extends="base">
-        <put-attribute name="title" value="Employee List View" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
-        <put-attribute name="body" value="/WEB-INF/pages/employee/employeeList.jsp" />
+    <definition name="employee-view" extends="base">
+        <put-attribute name="title" value="Employee View" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/pages/employee/employee-view.jsp" />
     </definition>
     
     <definition name="employee-add" extends="base">
         <put-attribute name="title" value="Add Employee" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/employee/employee-add.jsp" />
     </definition>
     
     <definition name="employee-edit" extends="base">
         <put-attribute name="title" value="Edit Employee" />
-        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu-admin.jsp" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
         <put-attribute name="body" value="/WEB-INF/pages/employee/employee-edit.jsp" />
     </definition>
 </tiles-definitions>

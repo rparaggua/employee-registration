@@ -57,17 +57,16 @@
  		p:defaultFailureUrl="/login-failed" />
  		
  	 <!-- Set default target url -->
- 	<beans:bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"
- 		p:defaultTargetUrl="/login-success" />
+<!--  	<beans:bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler" -->
+<!--  		p:defaultTargetUrl="/login-success" /> -->
+ 	 <beans:bean id="customAuthenticationSuccessHandler"
+        class="com.onb.employeeRegistration.init.CustomAuthenticationSuccessHandler" />
  	
  	<!-- Authentication Entrypoint -->
  	<beans:bean id="authenticationEntryPoint"  class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint"
 	 	p:loginFormUrl="/login"/>
 	 
 	<beans:bean id="authenticationTrustResolver" class="org.springframework.security.authentication.AuthenticationTrustResolverImpl" />
-         	
-	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
-		p:cacheSeconds="0"/> 
-	
+
 	<authentication-manager/>
 </beans:beans>

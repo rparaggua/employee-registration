@@ -61,6 +61,10 @@ public class ERSAccount implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateCreated;
 	
+	@Column(name = "activated")
+	@NotBlank(message = "{com.onb.employeeregistration.validator.message.required}")
+	private Boolean activated;
+
 	@OneToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
@@ -109,6 +113,14 @@ public class ERSAccount implements Serializable {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public Boolean getActivated() {
+		return activated;
+	}
+
+	public void setActivated(Boolean activated) {
+		this.activated = activated;
 	}
 
 	public List<Role> getRoles() {

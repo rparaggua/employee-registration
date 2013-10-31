@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/datatables/custom.css"/>
 		
 		<!-- JS Imports -->
+		<script src="${pageContext.servletContext.contextPath}/resources/js/ColVis.js.js"></script>
 	 	<script src="${pageContext.servletContext.contextPath}/resources/js/jquery-1.8.3.min.js"></script>
 		<script src="${pageContext.servletContext.contextPath}/resources/js/jquery-ui-1.8.12.custom.min.js"></script>
 		<script src="${pageContext.servletContext.contextPath}/resources/js/jquery.dataTables.min.js"></script>
@@ -21,7 +22,7 @@
 		<script src="${pageContext.servletContext.contextPath}/resources/js/date.js"></script>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar navbar-inverse">
       		<div class="container">
         		<h1>ERS</h1>
         		<p>Employee Registration System</p>

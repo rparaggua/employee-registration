@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onb.employeeRegistration.domain.Department;
+import com.onb.employeeRegistration.domain.Employee;
 import com.onb.employeeRegistration.service.BranchService;
 import com.onb.employeeRegistration.service.DepartmentService;
+import com.onb.employeeRegistration.service.EmployeeService;
 
 @Controller
 @RequestMapping(value = "/department")
@@ -28,14 +30,19 @@ public class DepartmentController {
 	@Autowired
 	private BranchService branchService;
 	
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public String getBranchDepartment(@PathVariable Long id, Model model){
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+	public String getDepartmentView(@PathVariable Long id, Model model){
 		
-		List<Department> departmentList = departmentService.getBranchDepartmentListByBranchId(id);
-		model.addAttribute("branchId", id);
-		model.addAttribute("departmentList", departmentList);
+		List<Employee> employeeList = employeeService.getEmployeeByDepartmentId(id);
+		Department department = departmentService.getDepartmentById(id);
 		
-		return "branchDepartmentListView";
+		model.addAttribute("employeeList", employeeList);
+		model.addAttribute("department", department);
+		
+		return "department-view";
 	}
 
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
@@ -57,7 +64,7 @@ public class DepartmentController {
 		else {
 			try{
 				departmentService.addOrUpdateDepartment(department);
-				return "redirect:/department/"+department.getBranch().getId();
+				return "redirect:/branch/view/"+department.getBranch().getId();
 			}
 			catch(DataIntegrityViolationException ex){
 				result.rejectValue("name", "com.onb.employeeregistration.validator.message.departmentExist");
@@ -84,7 +91,7 @@ public class DepartmentController {
 		else {
 			try{
 				departmentService.addOrUpdateDepartment(department);
-				return "redirect:/department/"+department.getBranch().getId();
+				return "redirect:/branch/view/"+department.getBranch().getId();
 			}
 			catch(DataIntegrityViolationException ex){
 				result.rejectValue("name", "com.onb.employeeregistration.validator.message.departmentExist");
@@ -100,6 +107,6 @@ public class DepartmentController {
 		Long branchId = department.getBranch().getId();
 		departmentService.deleteDepartment(department);
 		
-		return "redirect:/department/"+branchId;
+		return "redirect:/branch/view/"+branchId;
 	}
 }

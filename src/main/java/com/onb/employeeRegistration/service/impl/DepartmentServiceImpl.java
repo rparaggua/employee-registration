@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.onb.employeeRegistration.dao.DepartmentDao;
 import com.onb.employeeRegistration.domain.Department;
+import com.onb.employeeRegistration.service.BranchService;
 import com.onb.employeeRegistration.service.DepartmentService;
 
 @Service
@@ -17,8 +18,12 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Autowired
 	private DepartmentDao departmentDao;
 	
+	@Autowired
+	private BranchService branchService;
+	
 	@Override
 	public void addOrUpdateDepartment(Department department) {
+		department.setBranch(branchService.getBranchById(department.getBranch().getId()));
 		departmentDao.addOrUpdateDepartment(department);
 	}
 

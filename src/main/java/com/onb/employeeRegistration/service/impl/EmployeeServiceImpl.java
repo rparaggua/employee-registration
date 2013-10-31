@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.onb.employeeRegistration.dao.EmployeeDao;
 import com.onb.employeeRegistration.domain.Employee;
+import com.onb.employeeRegistration.service.DepartmentService;
 import com.onb.employeeRegistration.service.EmployeeService;
 
 @Service
@@ -17,8 +18,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired
 	private EmployeeDao employeeDao;
 	
+	@Autowired
+	private DepartmentService departmentService;
+	
 	@Override
 	public void addOrUpdateEmployee(Employee employee) {
+		employee.setDepartment(departmentService.getDepartmentById(employee.getDepartment().getId()));
 		employeeDao.addOrUpdateEmployee(employee);
 	}
 

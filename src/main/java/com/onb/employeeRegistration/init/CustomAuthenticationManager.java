@@ -2,7 +2,9 @@ package com.onb.employeeRegistration.init;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,12 +30,6 @@ public class CustomAuthenticationManager implements AuthenticationManager{
 	@Autowired
 	private ERSAccountService ersAccountService;
 	
-//	@Autowired(name="sessionRegistry")
-//	 private SessionRegistryImpl sessionRegistry;
-//	
-//	@Resource(name="sessionRegistry")
-//	 private SessionRegistryImpl sessionRegistry;
-	
 	@Autowired
 	private void setShaPasswordEncoder() {
 		this.shaPasswordEncoder = new ShaPasswordEncoder(256);
@@ -54,23 +50,30 @@ public class CustomAuthenticationManager implements AuthenticationManager{
 			throw new BadCredentialsException("Invalid Username or Password");
 		}
 		else{
-			return new UsernamePasswordAuthenticationToken(
-					authentication.getName(), 
-					authentication.getCredentials(), 
-					getAuthorities(ersAccount.getRoles()));
+			if(ersAccount.getActivated()){
+				return new UsernamePasswordAuthenticationToken(
+						authentication.getName(), 
+						authentication.getCredentials(), 
+						getAuthorities(ersAccount.getRoles()));
+			}
+			else{
+				throw new BadCredentialsException("Account Not Activated");
+			}
 		}
 	}
 	private Collection<? extends GrantedAuthority> getAuthorities(List<Role> roles) { 
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		
+//		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		Set<GrantedAuthority>authorities = new HashSet<GrantedAuthority>();
 		for (Role role : roles) {
+			authorities.add(new SimpleGrantedAuthority(role.getName()));
 			List<Access> accesses = role.getAccess();
 		
 			for (Access access : accesses) {
 				authorities.add(new SimpleGrantedAuthority(access.getName()));
 			}
 		}
-		return authorities;
+		List <GrantedAuthority> list = new ArrayList<GrantedAuthority>(authorities);
+		return list;
 	}
 	
 }
