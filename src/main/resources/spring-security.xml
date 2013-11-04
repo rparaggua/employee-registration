@@ -12,7 +12,6 @@
  
  	<!-- Contains core security rules -->
 	<http pattern="/denied" security="none" disable-url-rewriting="true"/>
-<!-- 	<http pattern="/login" security="none" disable-url-rewriting="true"/> -->
 	<http pattern="/login-failed" security="none" disable-url-rewriting="true"/>
 	<http pattern="/resources/**" security="none" disable-url-rewriting="true"/>
 	<http pattern="/" security="none" disable-url-rewriting="true"/>
@@ -21,6 +20,7 @@
 		<intercept-url pattern="/branch/**" access="isAuthenticated()" requires-channel="any"/>
 		<intercept-url pattern="/department/**" access="isAuthenticated()" requires-channel="any"/>
 		<intercept-url pattern="/employee/**" access="isAuthenticated()" requires-channel="any"/>
+		<intercept-url pattern="/ersaccount/**" access="isAuthenticated()" requires-channel="any"/>
 		<intercept-url pattern="/login-success*" access="isAuthenticated()" requires-channel="any"/>
 		
 		<logout invalidate-session="true" 
@@ -56,9 +56,6 @@
  	<beans:bean id="customAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"
  		p:defaultFailureUrl="/login-failed" />
  		
- 	 <!-- Set default target url -->
-<!--  	<beans:bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler" -->
-<!--  		p:defaultTargetUrl="/login-success" /> -->
  	 <beans:bean id="customAuthenticationSuccessHandler"
         class="com.onb.employeeRegistration.init.CustomAuthenticationSuccessHandler" />
  	

@@ -20,9 +20,11 @@ insert into employeeregistration.Role_access(role_id, access_id)values(2, 6);
 insert into employeeregistration.Role_access(role_id, access_id)values(2, 7);
 insert into employeeregistration.Role_access(role_id, access_id)values(2, 8);
 insert into employeeregistration.Role_access(role_id, access_id)values(2, 9);
+insert into employeeregistration.Role_access(role_id, access_id)values(2, 10);
 --Department Head
 insert into employeeregistration.Role_access(role_id, access_id)values(3, 8);
 insert into employeeregistration.Role_access(role_id, access_id)values(3, 11);
 insert into employeeregistration.Role_access(role_id, access_id)values(3, 12);
 insert into employeeregistration.Role_access(role_id, access_id)values(3, 13);
 insert into employeeregistration.Role_access(role_id, access_id)values(3, 14);
+insert into employeeregistration.Role_access(role_id, access_id)values(3, 15);

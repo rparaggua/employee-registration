@@ -9,6 +9,7 @@
 <%@attribute name="placeholder" required="false" type="java.lang.String"%>
 <%@attribute name="size" required="false" type="java.lang.Integer"%>
 <%@attribute name="required" required="false" type="java.lang.Boolean"%>
+<%@attribute name="autocomplete" required="false" type="java.lang.String"%>
 
 
 <c:if test="${empty label}">
@@ -18,7 +19,7 @@
     <div class="control-group">
     	<label class="control-label" for="${path}">${label}<c:if test="${required}"><span class="required">*</span></c:if></label>
         <div class="controls">
-        	<form:input path="${path}" cssClass="${empty cssClass ? 'input-xlarge' : cssClass}" placeholder="${empty placeholder ? '' : placeholder}" size="${empty size ? '15' : size}"/>
+        	<form:password path="${path}" cssClass="${empty cssClass ? 'input-xlarge' : cssClass}" placeholder="${empty placeholder ? '' : placeholder}" size="${empty size ? '15' : size}" autocomplete="${empty autocomplete ? 'on' : autocomplete}"/>
 			<c:if test="${status.error}">
                 <span class="error">${status.errorMessage}</span>
             </c:if>

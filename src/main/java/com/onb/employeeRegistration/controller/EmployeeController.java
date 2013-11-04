@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,6 +36,7 @@ public class EmployeeController {
 	@Autowired
 	private ContributionService contributionService;
 	
+	@PostAuthorize("hasRole('VIEW_EMPLOYEE')")
 	@RequestMapping(value="/view/{id}", method = RequestMethod.GET)
 	public String getEmployeeView(@PathVariable Long id, Model model){
 		
@@ -46,6 +48,7 @@ public class EmployeeController {
 		return "employee-view";
 	}
 	
+	@PostAuthorize("hasRole('ADD_EMPLOYEE')")
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String addEmployee(@PathVariable Long id, Model model){
 
@@ -56,6 +59,7 @@ public class EmployeeController {
 		return "employee-add";
 	}
 	
+	@PostAuthorize("hasRole('ADD_EMPLOYEE')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addEmployee(@Valid Employee employee, BindingResult result) {
 
@@ -76,6 +80,7 @@ public class EmployeeController {
 		}
 	}
 	
+	@PostAuthorize("hasRole('EDIT_EMPLOYEE')")
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editEmployee(@PathVariable Long id, Model model){
 		
@@ -85,6 +90,7 @@ public class EmployeeController {
 		return "employee-edit";
 	}
 	
+	@PostAuthorize("hasRole('EDIT_EMPLOYEE')")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String updateEmployee(@Valid Employee employee, BindingResult result) {
 		
@@ -105,6 +111,7 @@ public class EmployeeController {
 		}
 	}
 	
+	@PostAuthorize("hasRole('DELETE_EMPLOYEE')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteEmployee(@PathVariable Long id, Model model){
 		

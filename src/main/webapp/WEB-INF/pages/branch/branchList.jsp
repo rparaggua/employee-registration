@@ -2,54 +2,69 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:url value="/" var="rootUrl"/>
 
 <div class="ui-widget-content">
 	<h3 class="title">Branch List</h3>
 	
-	<table id='branchTable'>
- 		<thead>
-  			<tr>
-   				<th></th>
-   				<th>Id</th>
-   				<th>Branch Name</th>
-   				<th>Address</th>
-   				<th>Email</th>
-   				<th>Phone Number</th>
- 	 		</tr>
- 		</thead>
- 		<tbody>
-			<c:forEach var="branch" items="${branchList}">
-				<tr>
-					<td>
-						<input type="radio" name="branchRadio" value="${branch.id}" />
-					</td>
-					<td>
-						<c:out value="${branch.id}"/>
-					</td>
-					<td>
-						<a href="${pageContext.servletContext.contextPath}/branch/view/${branch.id}">
-						<c:out value="${branch.name}"/>
-						</a>
-					</td>
-					<td>
-						<c:out value="${branch.address}"/>
-					</td>
-					<td>
-						<c:out value="${branch.email}"/>
-					</td>
-					<td>
-						<c:out value="${branch.phoneNumber}"/>
-					</td>
-				</tr>
-			</c:forEach>
- 		</tbody>
-	</table>
+	<sec:authorize access="hasRole('VIEW_BRANCH_LISTINGS')">
+		<table id='branchTable'>
+	 		<thead>
+	  			<tr>
+	   				<th></th>
+	   				<th>Id</th>
+	   				<th>Branch Name</th>
+	   				<th>Address</th>
+	   				<th>Email</th>
+	   				<th>Phone Number</th>
+	 	 		</tr>
+	 		</thead>
+	 		<tbody>
+				<c:forEach var="branch" items="${branchList}">
+					<tr>
+						<td>
+							<input type="radio" name="branchRadio" value="${branch.id}" />
+						</td>
+						<td>
+							<c:out value="${branch.id}"/>
+						</td>
+						<td>
+							<a 
+								<sec:authorize access="hasRole('VIEW_BRANCH')">
+									href="${pageContext.servletContext.contextPath}/branch/view/${branch.id}"
+								</sec:authorize> >
+							<c:out value="${branch.name}"/>
+							</a>
+						</td>
+						<td>
+							<c:out value="${branch.address}"/>
+						</td>
+						<td>
+							<c:out value="${branch.email}"/>
+						</td>
+						<td>
+							<c:out value="${branch.phoneNumber}"/>
+						</td>
+					</tr>
+				</c:forEach>
+	 		</tbody>
+		</table>
+	</sec:authorize>
+	
 	<div class="control">
-		<span><a href="#" id="addLink">Add</a></span>
-		<span><a href="#" id="editLink">Edit</a></span>
-		<span><a href="#" id="deleteLink">Delete</a></span>
+		<sec:authorize access="hasRole('ADD_BRANCH')">
+			<span><a href="#" id="addLink">Add</a></span>
+		</sec:authorize>
+		
+		<sec:authorize access="hasRole('EDIT_BRANCH')">
+			<span><a href="#" id="editLink">Edit</a></span>
+		</sec:authorize>
+		
+		<sec:authorize access="hasRole('DELETE_BRANCH')">
+			<span><a href="#" id="deleteLink">Delete</a></span>
+		</sec:authorize>
 	</div>
 </div>
 <br/>

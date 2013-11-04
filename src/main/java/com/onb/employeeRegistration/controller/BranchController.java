@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +28,7 @@ public class BranchController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-	
+	@PostAuthorize("hasRole('VIEW_BRANCH_LISTINGS')")
 	@RequestMapping(method = RequestMethod.GET)
 	public String getBranchListView(Model model){
 		
@@ -37,6 +38,7 @@ public class BranchController {
 		return "branchListView";
 	}
 	
+	@PostAuthorize("hasAnyRole('VIEW_BRANCH','BRANCH_HEAD')")
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String getBranchView(@PathVariable Long id, Model model){
 		
@@ -49,6 +51,7 @@ public class BranchController {
 		return "branch-View";
 	}
 	
+	@PostAuthorize("hasRole('ADD_BRANCH')")
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getAddBranchView(Model model){
 		
@@ -57,6 +60,7 @@ public class BranchController {
 		return "branch-add";
 	}
 	
+	@PostAuthorize("hasRole('ADD_BRANCH')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addBranch(@Valid Branch branch, BindingResult result) {
 		
@@ -72,6 +76,7 @@ public class BranchController {
  
 	}
 	
+	@PostAuthorize("hasRole('DELETE_BRANCH')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBranch(@PathVariable Long id, Model model){
 		
@@ -81,6 +86,7 @@ public class BranchController {
 		return "redirect:/branch";
 	}
 	
+	@PostAuthorize("hasRole('EDIT_BRANCH')")
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editBranch(@PathVariable Long id, Model model){
 		
@@ -90,6 +96,7 @@ public class BranchController {
 		return "branch-edit";
 	}
 	
+	@PostAuthorize("hasRole('EDIT_BRANCH')")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String updateBranch(@Valid Branch branch, BindingResult result) {
 

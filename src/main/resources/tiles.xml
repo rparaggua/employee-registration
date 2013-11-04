@@ -20,17 +20,19 @@
     	<put-attribute name="title" value="Login" />
         <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp" />
     </definition>
-       
-    <!-- Access Denied -->
-    <definition name="accessdenied" extends="plainbase">
-    	<put-attribute name="title" value="Access Denied" />
-        <put-attribute name="body" value="/WEB-INF/pages/commons/access-denied.jsp" />
+    
+	<!-- Change Password -->
+     <definition name="change-password" extends="base">
+        <put-attribute name="title" value="Change Password" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/pages/commons/change-password.jsp" />
     </definition>
     
-    <!-- Error -->
-    <definition name="error" extends="plainbase">
-    	<put-attribute name="title" value="Error" />
-        <put-attribute name="body" value="/WEB-INF/pages/commons/error.jsp" />
+    <!-- Change Password Success -->
+     <definition name="changePassword-success" extends="base">
+        <put-attribute name="title" value="Change Password Success" />
+        <put-attribute name="left-menu" value="/WEB-INF/pages/commons/left-menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/pages/commons/changepasswordSuccess.jsp" />
     </definition>
     
     <!-- Branch Function -->

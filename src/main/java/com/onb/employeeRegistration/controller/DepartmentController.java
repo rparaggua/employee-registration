@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,6 +35,7 @@ public class DepartmentController {
 	@Autowired
 	private EmployeeService employeeService;
 	
+	@PostAuthorize("hasAnyRole('VIEW_DEPARTMENT', 'DEPARTMENT_HEAD')")
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String getDepartmentView(@PathVariable Long id, Model model){
 		
@@ -45,6 +48,7 @@ public class DepartmentController {
 		return "department-view";
 	}
 
+	@PostAuthorize("hasRole('ADD_DEPARTMENT')")
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String addDepartment(@PathVariable Long id, Model model){
 
@@ -55,6 +59,7 @@ public class DepartmentController {
 		return "department-add";
 	}
 	
+	@PostAuthorize("hasRole('ADD_DEPARTMENT')")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addDepartment(@Valid Department department, BindingResult result) {
 
@@ -73,6 +78,7 @@ public class DepartmentController {
 		}
 	}
 	
+	@PostAuthorize("hasRole('EDIT_DEPARTMENT')")
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editDepartment(@PathVariable Long id, Model model){
 		
@@ -82,6 +88,7 @@ public class DepartmentController {
 		return "department-edit";
 	}
 	
+	@PostAuthorize("hasRole('EDIT_DEPARTMENT')")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String updateDepartment(@Valid Department department, BindingResult result) {
 		
@@ -100,6 +107,7 @@ public class DepartmentController {
 		}
 	}
 
+	@PostAuthorize("hasRole('DELETE_DEPARTMENT')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteDepartment(@PathVariable Long id, Model model){
 		

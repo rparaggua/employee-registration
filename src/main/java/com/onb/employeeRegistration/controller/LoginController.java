@@ -12,6 +12,11 @@ public class LoginController {
 	@Autowired
 	private ERSAccountService ersAccountService;
 	
+	@RequestMapping(value = "/")
+	public String getLogin() {
+		return "login";
+	}
+	
 	@RequestMapping(value = "/login")
 	public String getLoginPage() {
 		return "login";	

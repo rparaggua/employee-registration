@@ -62,7 +62,6 @@ public class CustomAuthenticationManager implements AuthenticationManager{
 		}
 	}
 	private Collection<? extends GrantedAuthority> getAuthorities(List<Role> roles) { 
-//		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		Set<GrantedAuthority>authorities = new HashSet<GrantedAuthority>();
 		for (Role role : roles) {
 			authorities.add(new SimpleGrantedAuthority(role.getName()));

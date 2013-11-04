@@ -15,5 +15,9 @@ public interface ERSAccountService {
 	List<ERSAccount> ersAccountList();
 	
 	Boolean usernameExist(String username);
+	
+	void activateUserAccount(String username);
+	
+	String encodePassword(ERSAccount ersAccount, String password);
 
 }

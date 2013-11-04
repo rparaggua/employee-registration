@@ -5,13 +5,13 @@
 	<form:form class="form-horizontal ui-widget-content" method="POST" commandName="employee" action="${pageContext.servletContext.contextPath}/employee/add">
 		<fieldset>
 			<legend>Add Employee</legend>
-			<t:input path="firstname" label="First Name: " size="30"/>
-			<t:input path="middlename" label="Middle Name: " size="30"/>
-			<t:input path="lastname" label="Last Name: " size="30"/>
-			<t:input path="address" label="Home Address: " size="30"/>
-			<t:input path="email" label="Email Address: " size="30"/>
-			<t:input path="phoneNumber" label="Telephone Number: " size="30"/>
-			<t:input path="grossSalary" label="Gross Salary: " size="30"/>
+			<t:input path="firstname" label="First Name: " size="30" placeholder="First Name"/>
+			<t:input path="middlename" label="Middle Name: " size="30" placeholder="Middle Name"/>
+			<t:input path="lastname" label="Last Name: " size="30" placeholder="Last Name"/>
+			<t:input path="address" label="Home Address: " size="30" placeholder="Home Address"/>
+			<t:input path="email" label="Email Address: " size="30" placeholder="Email Address"/>
+			<t:input path="phoneNumber" label="Telephone Number: " size="30" placeholder="Telephone Number"/>
+			<t:input path="grossSalary" label="Gross Salary: " size="30" placeholder="Gross Salary"/>
 			<center><input type="submit" value="ADD EMPLOYEE" /></center>
 			<form:hidden path="department.id"/>
 			<br/>

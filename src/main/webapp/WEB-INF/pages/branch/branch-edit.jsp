@@ -5,10 +5,10 @@
 	<form:form  class="form-horizontal ui-widget-content" method="POST" commandName="branch" action="${pageContext.servletContext.contextPath}/branch/edit">
 		<fieldset>
 			<legend>Edit Branch</legend>
-			<t:input path="name" label="Branch Name: " size="30"/>
-			<t:input path="address" label="Branch Address: " size="30"/>
-			<t:input path="email" label="Email Address: " size="30"/>
-			<t:input path="phoneNumber" label="Phone Number: " size="30"/>
+			<t:input path="name" label="Branch Name: " size="30" placeholder="Branch Name"/>
+			<t:input path="address" label="Branch Address: " size="30" placeholder="Branch Address"/>
+			<t:input path="email" label="Email Address: " size="30" placeholder="Email Address"/>
+			<t:input path="phoneNumber" label="Phone Number: " size="30" placeholder="Phone Number"/>
 			<center><input type="submit" value="UPDATE BRANCH" /></center>
 			<form:hidden path="id" />
 			<br/>

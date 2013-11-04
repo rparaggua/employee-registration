@@ -7,7 +7,7 @@ public class PatternUtility {
 	
 	public static final String NAME_PATTERN = "[a-zA-Z ]*";
 	public static final String USERNAME_PATTERN ="[a-zA-Z0-9]*";
-	public static final String PASSWORD_PATTERN = "^(?=.*\\d).{7,15}";
+	public static final String PASSWORD_PATTERN = "|[a-zA-Z]*[0-9\\+\\*][a-zA-Z0-9\\+\\*]*";
 	public static final String ROLE_PATTERN = "[a-zA-Z0-9_]*";
 	public static final String ACCESS_PATTERN = "|[a-zA-Z0-9_]*";
 	public static final String ADDRESS_PATTERN = "|[a-zA-Z0-9-\\./+':()? ]*";
